@@ -1,5 +1,8 @@
 export function formatPrice(amount: number): string {
-  return new Intl.NumberFormat("uz-UZ").format(amount) + " so'm";
+  const withSeparators = Math.round(amount)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return withSeparators + " so'm";
 }
 
 export function slugify(text: string): string {
