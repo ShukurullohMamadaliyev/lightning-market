@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LogoMark } from "@/components/brand/Logo";
 import { CandlestickPattern, NetworkPattern } from "@/components/marketing/patterns";
 import { DottedSurface } from "@/components/marketing/DottedSurface";
+import { ConsultationButton } from "@/components/marketing/ConsultationButton";
 
 const INTRO_CARDS = [
   {
@@ -203,12 +204,9 @@ export default function HomePage() {
                 Kichik guruhlarda, jonli efirda ustozlar bilan bevosita muloqotda o&apos;qing —
                 savollaringizga darhol javob oling va amaliy tajriba orttiring.
               </p>
-              <Link
-                href="/register"
-                className="mt-8 w-fit rounded-full bg-[#3d4a63] px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-[#5b6f94]"
-              >
+              <ConsultationButton className="mt-8 w-fit rounded-full bg-[#3d4a63] px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-[#5b6f94]">
                 Ro&apos;yxatdan o&apos;tish
-              </Link>
+              </ConsultationButton>
             </div>
           </div>
         </div>

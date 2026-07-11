@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
 import { Logo } from "@/components/brand/Logo";
+import { useConsultationModalStore } from "@/lib/consultation-modal-store";
 
 const NAV_LINKS = [
   { href: "/#kurslar", label: "Kurslar" },
@@ -12,9 +12,9 @@ const NAV_LINKS = [
 ];
 
 export function Header() {
-  const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const openConsultation = useConsultationModalStore((s) => s.open);
 
   useEffect(() => {
     function onScroll() {
@@ -52,30 +52,12 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="ml-auto hidden shrink-0 items-center gap-5 text-xs font-medium uppercase tracking-widest text-white/80 md:flex">
-          {session?.user ? (
-            <div className="flex items-center gap-5">
-              {session.user.role === "ADMIN" && (
-                <Link href="/admin" className="transition hover:text-white">
-                  Admin
-                </Link>
-              )}
-              <button onClick={() => signOut({ callbackUrl: "/" })} className="transition hover:text-white">
-                Chiqish
-              </button>
-            </div>
-          ) : (
-            <Link href="/login" className="transition hover:text-white">
-              Kirish
-            </Link>
-          )}
-          <Link
-            href="/register"
-            className="rounded-full border border-[#3d4a63] bg-[#3d4a63] px-5 py-2 normal-case tracking-normal text-white transition hover:bg-[#5b6f94]"
-          >
-            Bepul konsultatsiya
-          </Link>
-        </div>
+        <button
+          onClick={openConsultation}
+          className="ml-auto hidden shrink-0 rounded-full border border-[#3d4a63] bg-[#3d4a63] px-5 py-2 text-xs font-medium text-white transition hover:bg-[#5b6f94] md:block"
+        >
+          Bepul konsultatsiya
+        </button>
 
         <button
           onClick={() => setMenuOpen((v) => !v)}
@@ -104,35 +86,15 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            {session?.user ? (
-              <>
-                {session.user.role === "ADMIN" && (
-                  <Link href="/admin" onClick={() => setMenuOpen(false)} className="hover:text-white">
-                    Admin
-                  </Link>
-                )}
-                <button
-                  onClick={() => {
-                    setMenuOpen(false);
-                    signOut({ callbackUrl: "/" });
-                  }}
-                  className="text-left hover:text-white"
-                >
-                  Chiqish
-                </button>
-              </>
-            ) : (
-              <Link href="/login" onClick={() => setMenuOpen(false)} className="hover:text-white">
-                Kirish
-              </Link>
-            )}
-            <Link
-              href="/register"
-              onClick={() => setMenuOpen(false)}
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                openConsultation();
+              }}
               className="w-fit rounded-full border border-[#3d4a63] bg-[#3d4a63] px-5 py-2 normal-case tracking-normal text-white transition hover:bg-[#5b6f94]"
             >
               Bepul konsultatsiya
-            </Link>
+            </button>
           </nav>
         </div>
       )}

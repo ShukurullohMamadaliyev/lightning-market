@@ -3,6 +3,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/storefront/Header";
 import { Footer } from "@/components/storefront/Footer";
+import { ConsultationModal } from "@/components/marketing/ConsultationModal";
 
 export const metadata: Metadata = {
   title: "X Academy — Trading va Sun'iy Intellekt bo'yicha professional ta'lim",
@@ -22,6 +23,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <ConsultationModal />
         </Providers>
       </body>
     </html>
