@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/brand/Logo";
 import { CandlestickPattern, NetworkPattern } from "@/components/marketing/patterns";
+import { DottedSurface } from "@/components/marketing/DottedSurface";
 
 const INTRO_CARDS = [
   {
@@ -91,8 +92,9 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0b0d]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#14171c] via-[#0a0b0d] to-[#0a0b0d]" />
-        <PatternBg pattern="chart" className="absolute inset-0 h-full w-full text-[#3d4a63]/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b0d] via-transparent to-[#0a0b0d]/60" />
+        <DottedSurface className="absolute inset-0 h-full w-full" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(61,74,99,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b0d] via-transparent to-[#0a0b0d]/70" />
 
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-6 text-center">
           <LogoMark variant="light" className="mb-8 h-14 w-14" />
