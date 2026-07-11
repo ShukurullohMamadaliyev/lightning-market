@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OnlineSavdo — O'zbekiston bo'ylab onlayn do'kon",
-  description: "Mahsulotlarni onlayn xarid qiling, O'zbekiston bo'ylab yetkazib berish.",
+  title: "X Academy — Trading va Sun'iy Intellekt bo'yicha professional ta'lim",
+  description:
+    "X Academy — Trading va sun'iy intellekt bo'yicha onlayn kurslar, tajribali ustozlar va jonli guruh darslari.",
 };
 
 export default function RootLayout({
@@ -28,9 +29,9 @@ export default function RootLayout({
   return (
     <html
       lang="uz"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-white text-neutral-900">
+      <body className="flex min-h-full flex-col bg-[#0a0b0d] text-white">
         <Providers>
           <Header />
           <main className="flex-1">{children}</main>
