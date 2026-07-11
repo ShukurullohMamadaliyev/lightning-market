@@ -1,14 +1,21 @@
 "use server";
 
+import { headers } from "next/headers";
 import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
 import { db } from "@/lib/db";
 import { signIn } from "@/lib/auth";
+import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
 export async function register(
   _prevState: string | undefined,
   formData: FormData,
 ) {
+  const ip = getClientIp(await headers());
+  if (!rateLimit(`register:${ip}`, 5, 60 * 60 * 1000)) {
+    return "Juda ko'p urinish. Birozdan so'ng qayta urinib ko'ring.";
+  }
+
   const name = (formData.get("name") as string)?.trim();
   const email = (formData.get("email") as string)?.trim().toLowerCase();
   const phone = (formData.get("phone") as string)?.trim();
@@ -17,8 +24,8 @@ export async function register(
   if (!name || !email || !password) {
     return "Barcha majburiy maydonlarni to'ldiring";
   }
-  if (password.length < 6) {
-    return "Parol kamida 6 ta belgidan iborat bo'lishi kerak";
+  if (password.length < 8) {
+    return "Parol kamida 8 ta belgidan iborat bo'lishi kerak";
   }
 
   const existing = await db.user.findUnique({ where: { email } });

@@ -39,13 +39,26 @@ export async function createProduct(_prevState: string | undefined, formData: Fo
   await requireAdmin();
 
   const fields = parseProductFields(formData);
-  if (!fields.name || !fields.categoryId || !Number.isFinite(fields.price)) {
+  if (
+    !fields.name ||
+    !fields.categoryId ||
+    !Number.isFinite(fields.price) ||
+    fields.price < 0 ||
+    fields.stock < 0 ||
+    (fields.discountPrice != null && (!Number.isFinite(fields.discountPrice) || fields.discountPrice < 0))
+  ) {
     return "Barcha majburiy maydonlarni to'g'ri to'ldiring";
   }
 
   const slug = await uniqueSlug(fields.name);
   const files = formData.getAll("images").filter((f): f is File => f instanceof File && f.size > 0);
-  const imageUrls = await Promise.all(files.map(saveUploadedImage));
+
+  let imageUrls: string[];
+  try {
+    imageUrls = await Promise.all(files.map(saveUploadedImage));
+  } catch (err) {
+    return err instanceof Error ? err.message : "Rasmni yuklashda xatolik";
+  }
 
   await db.product.create({
     data: {
@@ -68,7 +81,14 @@ export async function updateProduct(
   await requireAdmin();
 
   const fields = parseProductFields(formData);
-  if (!fields.name || !fields.categoryId || !Number.isFinite(fields.price)) {
+  if (
+    !fields.name ||
+    !fields.categoryId ||
+    !Number.isFinite(fields.price) ||
+    fields.price < 0 ||
+    fields.stock < 0 ||
+    (fields.discountPrice != null && (!Number.isFinite(fields.discountPrice) || fields.discountPrice < 0))
+  ) {
     return "Barcha majburiy maydonlarni to'g'ri to'ldiring";
   }
 
@@ -77,7 +97,13 @@ export async function updateProduct(
 
   const slug = existing.name === fields.name ? existing.slug : await uniqueSlug(fields.name, productId);
   const files = formData.getAll("images").filter((f): f is File => f instanceof File && f.size > 0);
-  const imageUrls = await Promise.all(files.map(saveUploadedImage));
+
+  let imageUrls: string[];
+  try {
+    imageUrls = await Promise.all(files.map(saveUploadedImage));
+  } catch (err) {
+    return err instanceof Error ? err.message : "Rasmni yuklashda xatolik";
+  }
 
   await db.product.update({
     where: { id: productId },
