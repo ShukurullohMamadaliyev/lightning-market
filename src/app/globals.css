@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: "Montenegrin Gothic One", sans-serif;
-  --font-display: "Montenegrin Gothic One", sans-serif;
+  /*
+   * SF Pro is Apple's proprietary font and can't be self-hosted on the web.
+   * Requesting it via -apple-system/BlinkMacSystemFont makes WebKit render
+   * the real SF Pro (Text for regular sizes, Display for large/bold text)
+   * on Mac/iPhone; other platforms fall back to their own system font.
+   */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 body {

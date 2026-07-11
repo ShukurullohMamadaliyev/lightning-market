@@ -17,14 +17,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uz" className="h-full scroll-smooth antialiased">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montenegrin+Gothic+One&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="flex min-h-full flex-col bg-[#0a0b0d] text-white">
         <Providers>
           <Header />
