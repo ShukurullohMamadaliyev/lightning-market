@@ -101,7 +101,7 @@ export default function HomePage() {
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#8b9ab5]">
             X Academy
           </p>
-          <h1 className="text-3xl font-semibold uppercase leading-tight tracking-wide text-white sm:text-5xl">
+          <h1 className="font-display text-4xl font-bold uppercase leading-[1.1] tracking-wide text-white sm:text-6xl">
             Trading va sun&apos;iy intellekt bo&apos;yicha professional ta&apos;lim
           </h1>
           <p className="mt-6 max-w-xl text-balance text-sm text-white/60 sm:text-base">
@@ -127,7 +127,7 @@ export default function HomePage() {
       {/* Intro / about */}
       <section id="biz-haqimizda" className="scroll-mt-20 bg-[#0a0b0d] px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <h2 className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-white/50">
+          <h2 className="font-display mb-10 text-center text-xs font-bold uppercase tracking-[0.3em] text-white/50">
             X Academy haqida
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
@@ -143,7 +143,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b0d] via-[#0a0b0d]/40 to-transparent" />
                 <div className="relative z-10">
-                  <h3 className="text-lg font-semibold text-white">{card.title}</h3>
+                  <h3 className="font-display text-lg font-bold text-white">{card.title}</h3>
                   <p className="mt-2 text-sm text-white/60">{card.description}</p>
                   <span className="mt-4 inline-block text-xs font-semibold uppercase tracking-widest text-[#8b9ab5] transition group-hover:text-white">
                     Batafsil →
@@ -158,7 +158,7 @@ export default function HomePage() {
       {/* Course catalog */}
       <section id="kurslar" className="scroll-mt-20 bg-[#0d0f12] px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <h2 className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-white/50">
+          <h2 className="font-display mb-10 text-center text-xs font-bold uppercase tracking-[0.3em] text-white/50">
             Kurslarimiz
           </h2>
           <div className="grid gap-6 sm:grid-cols-2">
@@ -176,7 +176,7 @@ export default function HomePage() {
                   <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-[#8b9ab5]">
                     {course.tag}
                   </p>
-                  <h3 className="text-2xl font-semibold text-white">{course.name}</h3>
+                  <h3 className="font-display text-2xl font-bold text-white">{course.name}</h3>
                   <p className="mt-2 max-w-sm text-sm text-white/60">{course.description}</p>
                   <span className="mt-5 inline-block text-xs font-semibold uppercase tracking-widest text-white/80 transition group-hover:text-white">
                     Batafsil →
@@ -196,7 +196,7 @@ export default function HomePage() {
               <NetworkPattern className="absolute inset-0 h-full w-full text-[#3d4a63]/40" />
             </div>
             <div className="flex flex-col justify-center p-10">
-              <h3 className="text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl">
+              <h3 className="font-display text-xl font-bold uppercase tracking-wide text-white sm:text-2xl">
                 Guruhda onlayn darslar
               </h3>
               <p className="mt-4 text-sm text-white/60">
@@ -217,7 +217,7 @@ export default function HomePage() {
       {/* Teachers */}
       <section id="ustozlar" className="scroll-mt-20 bg-[#0d0f12] px-6 py-24">
         <div className="mx-auto max-w-7xl">
-          <h2 className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-white/50">
+          <h2 className="font-display mb-10 text-center text-xs font-bold uppercase tracking-[0.3em] text-white/50">
             Ustozlarimiz
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -226,10 +226,10 @@ export default function HomePage() {
                 key={teacher.name}
                 className="rounded-2xl border border-white/10 bg-[#111318] p-6 text-center"
               >
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#3d4a63] to-[#20293a] text-lg font-semibold text-white">
+                <div className="font-display mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#3d4a63] to-[#20293a] text-lg font-bold text-white">
                   {teacher.initials}
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-white">{teacher.name}</h3>
+                <h3 className="font-display mt-4 text-base font-bold text-white">{teacher.name}</h3>
                 <p className="mt-1 text-xs font-medium uppercase tracking-wide text-[#8b9ab5]">
                   {teacher.role}
                 </p>

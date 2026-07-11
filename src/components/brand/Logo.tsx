@@ -38,8 +38,8 @@ export function Logo({
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <LogoMark variant={variant} className="h-7 w-7" />
-      <span className={`text-lg font-semibold tracking-tight ${textColor}`}>
-        X <span className="font-normal">Academy</span>
+      <span className={`font-display text-xl font-bold tracking-tight ${textColor}`}>
+        X <span className="font-medium">Academy</span>
       </span>
     </span>
   );

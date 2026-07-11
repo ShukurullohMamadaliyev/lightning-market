@@ -44,7 +44,7 @@ export function Header() {
           <Logo variant="light" />
         </Link>
 
-        <nav className="hidden flex-1 items-center justify-center gap-8 text-xs font-medium uppercase tracking-widest text-white/80 md:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-8 text-xs font-semibold uppercase tracking-widest text-white/80 md:flex">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="transition hover:text-white">
               {link.label}
@@ -98,7 +98,7 @@ export function Header() {
 
       {menuOpen && (
         <div className="border-t border-white/10 bg-[#0a0b0d] px-6 py-6 md:hidden">
-          <nav className="flex flex-col gap-5 text-sm font-medium uppercase tracking-widest text-white/80">
+          <nav className="flex flex-col gap-5 text-sm font-semibold uppercase tracking-widest text-white/80">
             {NAV_LINKS.map((link) => (
               <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="hover:text-white">
                 {link.label}
