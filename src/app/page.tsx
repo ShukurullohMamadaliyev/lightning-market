@@ -7,6 +7,7 @@ import { NetworkPattern } from "@/components/marketing/patterns";
 import { DottedSurface } from "@/components/marketing/DottedSurface";
 import { ConsultationButton } from "@/components/marketing/ConsultationButton";
 import { Reveal } from "@/components/marketing/Reveal";
+import { GrainOverlay } from "@/components/marketing/GrainOverlay";
 import { TradingIllustration } from "@/components/marketing/illustrations/TradingIllustration";
 import { AIIllustration } from "@/components/marketing/illustrations/AIIllustration";
 
@@ -109,6 +110,7 @@ export default function HomePage() {
         <DottedSurface className="absolute inset-0 h-full w-full" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(61,74,99,0.18),transparent_55%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b0d] via-transparent to-[#0a0b0d]/70" />
+        <GrainOverlay className="pointer-events-none absolute inset-0 h-full w-full mix-blend-overlay" />
 
         <motion.div
           className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-6 text-center"
@@ -150,7 +152,7 @@ export default function HomePage() {
           >
             <Link
               href="/#kurslar"
-              className="mt-10 inline-block rounded-full border border-white/30 px-8 py-3 text-xs font-semibold uppercase tracking-widest text-white transition hover:border-white hover:bg-white hover:text-[#0a0b0d]"
+              className="mt-10 inline-block rounded-full border border-white/30 px-8 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-[#0a0b0d] hover:shadow-[0_12px_40px_-10px_rgba(255,255,255,0.35)]"
             >
               Kurslarni ko&apos;rish
             </Link>
@@ -160,8 +162,11 @@ export default function HomePage() {
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 1.1 }}
+          animate={{ opacity: 1, y: [0, 8, 0] }}
+          transition={{
+            opacity: { duration: 0.7, delay: 1.1 },
+            y: { duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
+          }}
         >
           <svg width="20" height="28" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="18" height="26" rx="9" stroke="currentColor" />
@@ -171,8 +176,9 @@ export default function HomePage() {
       </section>
 
       {/* Intro / about */}
-      <section id="biz-haqimizda" className="scroll-mt-20 bg-[#0a0b0d] px-6 py-24">
-        <div className="mx-auto max-w-7xl">
+      <section id="biz-haqimizda" className="relative scroll-mt-20 overflow-hidden bg-[#0a0b0d] px-6 py-24">
+        <div className="pointer-events-none absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#3d4a63]/10 blur-[100px]" />
+        <div className="relative mx-auto max-w-7xl">
           <Reveal>
             <h2 className="font-display mb-10 text-center text-xs font-bold uppercase tracking-[0.3em] text-white/50">
               X Academy haqida
@@ -183,7 +189,7 @@ export default function HomePage() {
               <Reveal key={card.title} delay={i * 0.15}>
                 <Link
                   href={card.href}
-                  className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#111318] p-6"
+                  className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#111318] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#5b6f94]/50 hover:shadow-[0_24px_60px_-20px_rgba(61,74,99,0.55)]"
                 >
                   <TopicIllustration
                     topic={card.topic}
@@ -193,8 +199,8 @@ export default function HomePage() {
                   <div className="relative z-10">
                     <h3 className="font-display text-lg font-bold text-white">{card.title}</h3>
                     <p className="mt-2 text-sm text-white/60">{card.description}</p>
-                    <span className="mt-4 inline-block text-xs font-semibold uppercase tracking-widest text-[#8b9ab5] transition group-hover:text-white">
-                      Batafsil →
+                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-[#8b9ab5] transition group-hover:gap-2 group-hover:text-white">
+                      Batafsil <span aria-hidden="true">→</span>
                     </span>
                   </div>
                 </Link>
@@ -205,8 +211,10 @@ export default function HomePage() {
       </section>
 
       {/* Course catalog */}
-      <section id="kurslar" className="scroll-mt-20 bg-[#0d0f12] px-6 py-24">
-        <div className="mx-auto max-w-7xl">
+      <section id="kurslar" className="relative scroll-mt-20 overflow-hidden bg-[#0d0f12] px-6 py-24">
+        <div className="pointer-events-none absolute right-0 top-1/3 h-80 w-80 rounded-full bg-[#8b5cf6]/10 blur-[110px]" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-80 w-80 rounded-full bg-[#34d399]/10 blur-[110px]" />
+        <div className="relative mx-auto max-w-7xl">
           <Reveal>
             <h2 className="font-display mb-10 text-center text-xs font-bold uppercase tracking-[0.3em] text-white/50">
               Kurslarimiz
@@ -215,7 +223,7 @@ export default function HomePage() {
           <div className="grid gap-6 sm:grid-cols-2">
             {COURSES.map((course, i) => (
               <Reveal key={course.name} delay={(i % 2) * 0.2}>
-                <div className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#111318] p-8">
+                <div className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#111318] p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#5b6f94]/50 hover:shadow-[0_24px_60px_-20px_rgba(61,74,99,0.55)]">
                   <TopicIllustration
                     topic={course.topic}
                     className="absolute inset-0 h-full w-full scale-110 opacity-80 transition duration-500 group-hover:scale-125"
@@ -227,8 +235,8 @@ export default function HomePage() {
                     </p>
                     <h3 className="font-display text-2xl font-bold text-white">{course.name}</h3>
                     <p className="mt-2 max-w-sm text-sm text-white/60">{course.description}</p>
-                    <span className="mt-5 inline-block text-xs font-semibold uppercase tracking-widest text-white/80 transition group-hover:text-white">
-                      Batafsil →
+                    <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-white/80 transition group-hover:gap-2 group-hover:text-white">
+                      Batafsil <span aria-hidden="true">→</span>
                     </span>
                   </div>
                 </div>
@@ -240,9 +248,10 @@ export default function HomePage() {
 
       {/* CTA banner */}
       <section className="bg-[#0a0b0d] px-6 py-24">
-        <Reveal className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-white/10 bg-[#111318]">
+        <Reveal className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-white/10 bg-[#111318] transition-shadow duration-500 hover:shadow-[0_30px_80px_-30px_rgba(61,74,99,0.5)]">
           <div className="grid sm:grid-cols-2">
             <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden bg-[#14171c]">
+              <div className="pointer-events-none absolute h-56 w-56 rounded-full bg-[#3d4a63]/25 blur-[70px]" />
               <NetworkPattern className="absolute inset-0 h-full w-full text-[#3d4a63]/40" />
             </div>
             <div className="flex flex-col justify-center p-10">
@@ -253,7 +262,7 @@ export default function HomePage() {
                 Kichik guruhlarda, jonli efirda ustozlar bilan bevosita muloqotda o&apos;qing —
                 savollaringizga darhol javob oling va amaliy tajriba orttiring.
               </p>
-              <ConsultationButton className="mt-8 w-fit rounded-full bg-[#3d4a63] px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-[#5b6f94]">
+              <ConsultationButton className="mt-8 w-fit rounded-full bg-[#3d4a63] px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#5b6f94] hover:shadow-[0_12px_30px_-8px_rgba(91,111,148,0.7)]">
                 Ro&apos;yxatdan o&apos;tish
               </ConsultationButton>
             </div>
@@ -262,8 +271,9 @@ export default function HomePage() {
       </section>
 
       {/* Teachers */}
-      <section id="ustozlar" className="scroll-mt-20 bg-[#0d0f12] px-6 py-24">
-        <div className="mx-auto max-w-7xl">
+      <section id="ustozlar" className="relative scroll-mt-20 overflow-hidden bg-[#0d0f12] px-6 py-24">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-[#3d4a63]/10 blur-[110px]" />
+        <div className="relative mx-auto max-w-7xl">
           <Reveal>
             <h2 className="font-display mb-10 text-center text-xs font-bold uppercase tracking-[0.3em] text-white/50">
               Ustozlarimiz
@@ -272,8 +282,8 @@ export default function HomePage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TEACHERS.map((teacher, i) => (
               <Reveal key={teacher.name} delay={i * 0.12}>
-                <div className="rounded-2xl border border-white/10 bg-[#111318] p-6 text-center">
-                  <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border border-white/10 bg-gradient-to-br from-[#3d4a63] to-[#20293a]">
+                <div className="group rounded-2xl border border-white/10 bg-[#111318] p-6 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-[#5b6f94]/50 hover:shadow-[0_20px_50px_-20px_rgba(61,74,99,0.55)]">
+                  <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border border-white/10 bg-gradient-to-br from-[#3d4a63] to-[#20293a] transition-transform duration-300 group-hover:scale-105">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`https://api.dicebear.com/9.x/personas/svg?seed=${encodeURIComponent(teacher.seed)}&backgroundColor=3d4a63,20293a`}
