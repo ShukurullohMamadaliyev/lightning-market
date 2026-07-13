@@ -40,7 +40,6 @@ const COURSES = [
 ] as const;
 
 const TEACHER = {
-  seed: "Shukurulloh Mamadaliyev",
   name: "Shukurulloh Mamadaliyev",
   role: "Asoschi va bosh instruktor",
   bio: "Kompaniya ish jarayonlarining 70%ini avtomatlashtirgan mutaxassis — sun'iy intellekt sohasida 2 yillik va trading sohasida 4.5 yillik amaliy tajribaga ega.",
@@ -210,9 +209,9 @@ export default function HomePage() {
               <div className="h-40 w-40 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#3d4a63] to-[#20293a] transition-transform duration-300 group-hover:scale-105 sm:h-48 sm:w-48">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`https://api.dicebear.com/9.x/personas/svg?seed=${encodeURIComponent(TEACHER.seed)}&backgroundColor=3d4a63,20293a`}
+                  src={TEACHER.photo}
                   alt={TEACHER.name}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-top"
                 />
               </div>
               <div>
