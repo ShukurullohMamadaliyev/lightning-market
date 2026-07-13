@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
+import { ConsultationButton } from "@/components/marketing/ConsultationButton";
 
-const COLUMNS = [
+const LINK_COLUMNS = [
   {
     title: "Kurslar",
     links: [
@@ -9,14 +10,6 @@ const COLUMNS = [
       { label: "Professional Trader", href: "/#kurslar" },
       { label: "Sun'iy intellekt asoslari", href: "/#kurslar" },
       { label: "ChatGPT va Prompt Engineering", href: "/#kurslar" },
-    ],
-  },
-  {
-    title: "Kompaniya",
-    links: [
-      { label: "Biz haqimizda", href: "/#biz-haqimizda" },
-      { label: "Ustozlarimiz", href: "/#ustozlar" },
-      { label: "Bog'lanish", href: "/#biz-haqimizda" },
     ],
   },
   {
@@ -42,7 +35,7 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-[#0a0b0d] text-white">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
-          {COLUMNS.map((col) => (
+          {LINK_COLUMNS.map((col) => (
             <div key={col.title}>
               <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/50">
                 {col.title}
@@ -58,6 +51,23 @@ export function Footer() {
               </ul>
             </div>
           ))}
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/50">
+              Kompaniya
+            </h3>
+            <ul className="space-y-2.5">
+              <li>
+                <Link href="/#ustozlar" className="text-sm text-white/70 transition hover:text-white">
+                  Ustozlarimiz
+                </Link>
+              </li>
+              <li>
+                <ConsultationButton className="text-sm text-white/70 transition hover:text-white">
+                  Bog&apos;lanish
+                </ConsultationButton>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div className="mt-16 flex flex-col items-center gap-6 border-t border-white/10 pt-8 sm:flex-row sm:justify-between">

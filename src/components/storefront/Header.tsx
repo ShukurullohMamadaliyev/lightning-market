@@ -9,7 +9,6 @@ import { useConsultationModalStore } from "@/lib/consultation-modal-store";
 const NAV_LINKS = [
   { href: "/#kurslar", label: "Kurslar" },
   { href: "/#ustozlar", label: "Ustozlar" },
-  { href: "/#biz-haqimizda", label: "Biz haqimizda" },
 ];
 
 export function Header() {
