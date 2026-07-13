@@ -206,12 +206,12 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="group flex flex-col items-center gap-10 rounded-3xl border border-white/10 bg-[#111318] p-8 text-center transition-all duration-300 hover:border-[#5b6f94]/50 hover:shadow-[0_30px_80px_-30px_rgba(61,74,99,0.55)] sm:flex-row sm:p-12 sm:text-left">
-              <div className="h-40 w-40 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#3d4a63] to-[#20293a] transition-transform duration-300 group-hover:scale-105 sm:h-48 sm:w-48">
+              <div className="aspect-[736/981] w-48 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#3d4a63] to-[#20293a] transition-transform duration-300 group-hover:scale-105 sm:w-56">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={TEACHER.photo}
                   alt={TEACHER.name}
-                  className="h-full w-full object-cover object-top"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <div>
