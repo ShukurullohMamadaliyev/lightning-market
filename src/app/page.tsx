@@ -28,13 +28,13 @@ const COURSES = [
   {
     name: "Sun'iy Intellekt Asoslari",
     tag: "BOSHLANG'ICH DARAJA",
-    description: "Machine Learning va Data Science ga kirish.",
+    description: "Sun'iy intellekt siz uchun nimalarni qila olishi — imkoniyatlari va amaliy qo'llanilishi.",
     topic: "ai" as Topic,
   },
   {
-    name: "ChatGPT va Prompt Engineering",
+    name: "Sun'iy Intellekt va Trading Botlari",
     tag: "AMALIY KURS",
-    description: "AI vositalaridan ish va biznesda professional foydalanish.",
+    description: "Sun'iy intellekt yordamida kuchli dastur va botlar yaratib, tradingda foyda qiling.",
     topic: "ai" as Topic,
   },
 ] as const;
@@ -140,13 +140,16 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-7xl">
           <Reveal>
             <h2 className="font-display mb-10 text-center text-xs font-bold uppercase tracking-[0.3em] text-white/50">
-              Kurslarimiz
+              Kurslarimiz haqida
             </h2>
           </Reveal>
           <div className="grid gap-6 sm:grid-cols-2">
             {COURSES.map((course, i) => (
               <Reveal key={course.name} delay={(i % 2) * 0.2}>
-                <div className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#111318] p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#5b6f94]/50 hover:shadow-[0_24px_60px_-20px_rgba(61,74,99,0.55)]">
+                <Link
+                  href="/#jamoa"
+                  className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#111318] p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#5b6f94]/50 hover:shadow-[0_24px_60px_-20px_rgba(61,74,99,0.55)]"
+                >
                   <TopicIllustration
                     topic={course.topic}
                     className="absolute inset-0 h-full w-full scale-110 opacity-80 transition duration-500 group-hover:scale-125"
@@ -162,7 +165,7 @@ export default function HomePage() {
                       Batafsil <span aria-hidden="true">→</span>
                     </span>
                   </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -170,7 +173,7 @@ export default function HomePage() {
       </section>
 
       {/* Trust statement */}
-      <section className="relative overflow-hidden bg-[#0a0b0d] px-6 py-32">
+      <section id="jamoa" className="relative scroll-mt-20 overflow-hidden bg-[#0a0b0d] px-6 py-32">
         <motion.div
           className="pointer-events-none absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#3d4a63]/20 blur-[130px]"
           animate={{ opacity: [0.5, 0.9, 0.5], scale: [1, 1.08, 1] }}
