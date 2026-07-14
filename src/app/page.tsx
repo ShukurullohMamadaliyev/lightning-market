@@ -146,8 +146,8 @@ export default function HomePage() {
           <div className="grid gap-6 sm:grid-cols-2">
             {COURSES.map((course, i) => (
               <Reveal key={course.name} delay={(i % 2) * 0.2}>
-                <Link
-                  href="/#jamoa"
+                <a
+                  href="#jamoa"
                   className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#111318] p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#5b6f94]/50 hover:shadow-[0_24px_60px_-20px_rgba(61,74,99,0.55)]"
                 >
                   <TopicIllustration
@@ -165,7 +165,7 @@ export default function HomePage() {
                       Batafsil <span aria-hidden="true">→</span>
                     </span>
                   </div>
-                </Link>
+                </a>
               </Reveal>
             ))}
           </div>
