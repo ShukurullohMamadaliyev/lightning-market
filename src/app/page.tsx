@@ -40,9 +40,9 @@ const COURSES = [
 ] as const;
 
 const TEACHER = {
-  name: "Shukurulloh Mamadaliyev",
+  name: "Shukurulloh",
   role: "Asoschi va bosh instruktor",
-  bio: "Kompaniya ish jarayonlarining 70%ini avtomatlashtirgan mutaxassis — sun'iy intellekt sohasida 2 yillik va trading sohasida 4.5 yillik amaliy tajribaga ega.",
+  bio: "Sun'iy intellekt yordamida ish jarayonlarini avtomatlashtirib, qulay va samarali ishlashni yo'lga qo'ygan mutaxassis — trading uchun yordamchi botlar yaratadi va ulardan muvaffaqiyatli foydalanadi. Sun'iy intellekt sohasida 2 yillik, trading sohasida 4.5 yillik amaliy tajribaga ega. Umumiy qiymati 200 000 dollarga yaqin prop-treyding hisoblarida 7-10% foyda qayd etgan.",
   photo: "/team/shukurulloh.jpg",
 } as const;
 
